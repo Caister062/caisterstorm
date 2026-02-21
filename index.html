@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="CaisterVelocity — Return to Legacy HQ. A first-person horror experience." />
+  <title>CaisterVelocity</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Creepster&family=Special+Elite&family=Share+Tech+Mono&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="src/style.css" />
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+    }
+  }
+  </script>
+</head>
+
+<body>
+  <!-- Loading Screen -->
+  <div id="loading-screen">
+    <div class="loading-content">
+      <div class="glitch-wrapper">
+        <h1 class="glitch" data-text="LOADING">LOADING</h1>
+      </div>
+      <div class="loading-bar-container">
+        <div class="loading-bar" id="loading-bar"></div>
+      </div>
+      <p class="loading-text" id="loading-text">Initializing systems...</p>
+    </div>
+  </div>
+
+  <!-- Title Screen -->
+  <div id="title-screen" class="hidden">
+    <div class="snow-overlay" id="title-snow"></div>
+    <div class="scanlines"></div>
+    <div class="title-content">
+      <div class="glitch-wrapper">
+        <h1 class="game-title glitch" data-text="CAISTER VELOCITY">CAISTER VELOCITY</h1>
+      </div>
+      <p class="subtitle">RETURN TO LEGACY</p>
+      <div class="menu-buttons">
+        <button class="menu-btn" id="btn-play">
+          <span class="btn-text">PLAY</span>
+          <span class="btn-glitch"></span>
+        </button>
+        <button class="menu-btn" id="btn-settings">
+          <span class="btn-text">SETTINGS</span>
+          <span class="btn-glitch"></span>
+        </button>
+      </div>
+      <p class="click-prompt">Click anywhere to enable audio</p>
+    </div>
+    <div class="title-footer">
+      <p>&copy; 2026 Legacy Studios — Ottawa, ON</p>
+    </div>
+  </div>
+
+  <!-- Settings Overlay -->
+  <div id="settings-overlay" class="hidden">
+    <div class="settings-panel">
+      <h2>SETTINGS</h2>
+      <div class="setting-row">
+        <label>Mouse Sensitivity</label>
+        <input type="range" id="sensitivity" min="1" max="10" value="5" />
+      </div>
+      <div class="setting-row">
+        <label>Master Volume</label>
+        <input type="range" id="volume" min="0" max="100" value="70" />
+      </div>
+      <div class="setting-row">
+        <label>Quality</label>
+        <select id="quality">
+          <option value="low">Low</option>
+          <option value="medium">Medium</option>
+          <option value="high" selected>High</option>
+        </select>
+      </div>
+      <button class="menu-btn" id="btn-back-settings">
+        <span class="btn-text">BACK</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Game HUD -->
+  <div id="game-hud" class="hidden">
+    <div class="crosshair" id="crosshair">+</div>
+    <div class="flashlight-battery" id="battery-indicator">
+      <div class="battery-icon">🔦</div>
+      <div class="battery-bar-container">
+        <div class="battery-bar" id="battery-bar"></div>
+      </div>
+    </div>
+    <div class="interaction-prompt hidden" id="interaction-prompt">
+      <span class="key-hint">[E]</span> <span id="prompt-text">Interact</span>
+    </div>
+    <div class="hint-text hidden" id="hint-text"></div>
+  </div>
+
+  <!-- Note Viewer -->
+  <div id="note-viewer" class="hidden">
+    <div class="note-paper">
+      <div class="note-content" id="note-content"></div>
+      <button class="note-close-btn" id="btn-close-note">X</button>
+    </div>
+  </div>
+
+  <!-- Pause Menu -->
+  <div id="pause-menu" class="hidden">
+    <div class="pause-content">
+      <h2 class="glitch" data-text="PAUSED">PAUSED</h2>
+      <button class="menu-btn" id="btn-resume">
+        <span class="btn-text">RESUME</span>
+      </button>
+      <button class="menu-btn" id="btn-quit">
+        <span class="btn-text">QUIT TO MENU</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Three.js Canvas Container -->
+  <div id="game-container"></div>
+
+  <script type="module" src="src/main.js"></script>
+</body>
+
+</html>
